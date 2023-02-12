@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+<body>
+<table id="myTable">
+    <thead>
+    <tr>
+        <th>SL.No.</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>City</th>
+        <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>John</td>
+        <td>Doe</td>
+        <td>London</td>
+        <td>UK</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Jane</td>
+        <td>Doe</td>
+        <td>New York</td>
+        <td>USA</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Jim</td>
+        <td>Smith</td>
+        <td>Paris</td>
+        <td>France</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Sarah</td>
+        <td>Johnson</td>
+        <td>Berlin</td>
+        <td>Germany</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Tom</td>
+        <td>Brown</td>
+        <td>Tokyo</td>
+        <td>Japan</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<form id="myForm">
+    <label>First Name:</label>
+    <input type="text" id="firstName" required>
+    <br><br>
+    <label>Last Name:</label>
+    <input type="text" id="lastName" required>
+    <br><br>
+    <label>City:</label>
+    <input type="text" id="city" required>
+    <br><br>
+    <label>Country:</label>
+    <input type="text" id="country" required>
+    <br><br>
+
+    <input type="button" value="Add Row to Top" onclick="addRowToTop()">
+    <input type="button" value="Add Row to Bottom" onclick="addRowToBottom()">
+    <input type="button" onclick="myFunction()" value="Reset form">
+</form>
+
+
+<script>
+function addRowToTop() {
+  var table = document.getElementById("myTable");
+  var firstRow = 1;
+  var row = table.insertRow(firstRow);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var rowCount = table.rows.length;
+
+  for (var i = 1; i < rowCount; i++) {
+    var currentRow = table.rows[i];
+    var slNo = currentRow.cells[0];
+    slNo.innerHTML = i;
+  }
+
+  cell1.innerHTML = firstRow;
+  cell2.innerHTML = document.getElementById("firstName").value;
+  cell3.innerHTML = document.getElementById("lastName").value;
+  cell4.innerHTML = document.getElementById("city").value;
+  cell5.innerHTML = document.getElementById("country").value;
+  myFunction();
+}
+
+function addRowToBottom() {
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var rowCount = table.rows.length;
+
+  cell1.innerHTML = rowCount - 1;
+  cell2.innerHTML = document.getElementById("firstName").value;
+  cell3.innerHTML = document.getElementById("lastName").value;
+  cell4.innerHTML = document.getElementById("city").value;
+  cell5.innerHTML = document.getElementById("country").value;
+   myFunction();
+}
+
+function myFunction() {
+  document.getElementById("myForm").reset();
+}
+
+
+  </script>
+
+</body>
+</html>

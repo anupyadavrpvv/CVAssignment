@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentence Extractor</title>
+    <script>
+      function extractSentence() {
+        var sentence = document.getElementById("sentence").value;
+        var letter = document.getElementById("letter").value;
+        var index = sentence.indexOf(letter);
+        if (index == -1) {
+          document.getElementById("result").innerHTML = "The letter does not exist in the sentence.";
+        } else {
+          document.getElementById("result").innerHTML = sentence.substring(index + 1);
+        }
+      }
+    </script>
+</head>
+<body>
+<h1>Sentence Extractor</h1>
+<input type="text" id="sentence" placeholder="Enter a sentence">
+<input type="text" id="letter" placeholder="Enter a letter">
+<button onclick="extractSentence()">Submit</button>
+<p id="result"></p>
+</body>
+</html>
